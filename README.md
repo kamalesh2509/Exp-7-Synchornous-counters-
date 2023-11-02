@@ -71,59 +71,61 @@ Developed by: E.Kamalesh
 
 RegisterNumber: 212222100019
 
-## UP COUNTER
+#### UP COUNTER
 ```
-module Counters(clk,A);
+module sync(clk,A);
 input clk;
-output reg [3:0]A;
-always @(posedge clk)
-begin
-	A[3]=(((A[0])&(A[1])&(A[2]))^A[3]);
-	A[2]=(((A[0])&(A[1]))^A[2]);
-	A[1]=(A[0])^A[1];
-	A[0]=A[0]^1;
-end
-endmodule
-```
-## DOWN COUNTER
-```
-module dCounters(clk,A);
-input clk;
-output reg [3:0]A;
+output reg [0:2]A;
 always@(posedge clk)
 begin
-	A[3]=(((~A[0])&(~A[1])&(~A[2]))^A[3]);
-	A[2]=(((~A[0])&(~A[1]))^A[2]);
-	A[1]=(~A[0])^A[1];
-	A[0]=(~A[0])^1;
-end
+    A[0]=(((A[1])&(A[2]))^A[0]);
+	 A[1]=(A[2])^(A[1]);
+	 A[2]=1^A[2];
+end 
 endmodule
+```
+#### DOWN COUNTER
+```
+module exp6a(clk,A);
+input clk;
+output reg [0:2]A;
+always@(posedge clk)
+begin
+    A[0]=(((~A[1])&(~A[2]))^(A[0]));
+	 A[1]=(~A[2])^(A[1]);
+	 A[2]=1^A[2];
+end 
+endmodule 
 ```
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
-## UP COUNTER
+#### UP COUNTER
+![242543316-d6f15412-afd6-4cc6-9acb-71b9cbb948f1](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/0256856b-977b-498b-93f7-a4ed336a630b)
 
-![244931874-87e978f7-3a69-429d-b103-97759ddcfaa3](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/7cf5e4d4-6e9e-408f-886d-038e88412671)
 
-## DOWN COUNTER
-![244931880-83caeda7-7ecf-4445-a2a4-4e7a1ff31b7a](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/80c337e6-66bd-4d4a-bee2-4d8079d9f318)
+
+#### DOWN COUNTER
+![242543621-8220be78-da1b-4e46-b38c-d4018e2cd6a0](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/33a56d3d-24d0-4ead-883c-ff4b845d1caa)
 
 
 ### TIMING DIGRAMS FOR COUNTER  
 
-## UP COUNTER
-![244931889-cf617a88-0d0c-4486-b5b7-85afb6e4eed8](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/366a1b32-6a5f-4b71-b9ff-19d797fcc27c)
-## DOWN COUNTER
-![244931902-cd9c174e-2ad3-4a5e-8b21-a7218f621308](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/a611197e-3aa7-441d-b215-ffa30bc9e3d0)
+#### UP COUNTER
+![242543767-bc0090bc-bd2d-429f-b8fd-26a979742ef0](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/5b6bd309-e0a6-4ff9-82a3-0667fe6551bd)
+
+#### DOWN COUNTER
+![242543962-647beabe-25df-42ad-a174-afe29c526bc7](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/261c48d5-ca70-41cc-acbe-1b64b6b0e0ce)
+
 
 
 ### TRUTH TABLE 
 
-## UP COUNTER
-![244931913-b257f2e3-6935-4b6f-b6b0-49a32cd6ce97](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/c0a9bb75-a4cb-48a1-b4ff-d500a8b9d8bc)
+#### UP COUNTER
+![242544421-00b10a18-f220-4cae-8fe4-26d86c120eaf](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/93f92215-2396-49fc-ac92-1d7e82bf5389)
 
-## DOWN COUNTER
-![244931924-825cd60c-5e38-44c2-a589-d8abc30c2abe](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/176467b9-f88a-4280-8254-ceac2ee75e71)
+#### DOWN COUNTER
+![242547948-b4c938b8-53ca-4e54-8741-e15551defd78](https://github.com/kamalesh2509/Exp-7-Synchornous-counters-/assets/120444689/e21da70a-8553-4edc-9e74-dc171f6a1bb2)
+
 
 
 ### RESULTS 
